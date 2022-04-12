@@ -25,7 +25,6 @@ export class AdminAuthMiddleware implements IMiddleware<Context, NextFunction> {
         const cacheManager = await ctx.requestContext.getAsync(CacheManager);
         const stu_id = await utils.jwtVerify(token);
         const cacheToken = await cacheManager.get(stu_id);
-        console.log(cacheToken, token, stu_id);
         if (cacheToken !== token) {
           this.reject(ctx, { code: 11002 });
           return;

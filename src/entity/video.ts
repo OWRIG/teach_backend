@@ -24,8 +24,10 @@ export class Video extends BaseEntity {
   @Column()
   category: string;
 
-  @Column()
-  likes: string;
+  @Column({
+    default: 0,
+  })
+  likes: number;
 
   @OneToMany(() => Comment, comment => comment.video)
   comments: Comment[];
